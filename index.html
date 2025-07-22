@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoachXposure - Build Your Empire</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. الإعدادات العامة والمتغيرات --- */
+        :root {
+            --charcoal-black: #1A1A1A;
+            --emerald-green: #00A849; 
+            --off-white: #F5F5F5;
+            --dark-gray: #2C2C2C;
+            --font-en-title: 'Bebas Neue', sans-serif;
+            --font-ar-text: 'Cairo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--charcoal-black);
+            font-family: var(--font-ar-text);
+            color: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        /* --- 2. تصميم قسم الهيرو --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        /* ✨ كود الفيديو الجديد ✨ */
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* أهم خاصية: تجعل الفيديو يملأ المساحة دون تشويه */
+            
+            /* ✨ التعديل الجديد: إضافة تأثير الضبابية (Blur) ✨ */
+            /* يمكنك تغيير قيمة 5px لزيادة أو تقليل الضبابية */
+            filter: blur(5px);
+            
+            /* نكبر حجم الفيديو قليلا لإخفاء الحواف الضبابية التي تنتج عن الفلتر */
+            transform: scale(1.1);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .title-en {
+            font-family: var(--font-en-title);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            letter-spacing: 3px;
+            color: var(--off-white);
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .subtitle-ar {
+            font-family: var(--font-ar-text);
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            max-width: 600px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- 3. تصميم الزر الجديد (Ghost Button) --- */
+        .cta-button {
+            font-family: var(--font-ar-text);
+            background-color: transparent;
+            color: var(--off-white);
+            border: 2px solid var(--emerald-green);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+            position: relative;
+            box-shadow: 0 0 10px var(--emerald-green), inset 0 0 5px rgba(0, 168, 73, 0.5);
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--emerald-green);
+            color: var(--charcoal-black);
+            box-shadow: 0 0 25px var(--emerald-green);
+        }
+        
+        .cta-button:active {
+            transform: scale(0.97);
+            box-shadow: 0 0 40px var(--emerald-green), inset 0 0 15px rgba(0, 168, 73, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================== -->
+    <!-- Hero Section Start -->
+    <!-- ================== -->
+    <header class="hero">
+        <!-- ✨ تم تحديث هذا الجزء ✨ -->
+        <div class="video-background">
+            <video playsinline autoplay muted loop>
+                <!-- ⬇️ غيّر اسم الملف هنا ⬇️ -->
+                <source src="background-video.mp4" type="video/mp4">
+                متصفحك لا يدعم عرض الفيديوهات.
+            </video>
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 class="title-en">STOP TRAINING<br>START BUILDING YOUR EMPIRE</h1>
+            <p class="subtitle-ar">نحول خبرتك التدريبية إلى علامة تجارية تدر عليك الأرباح.</p>
+            <button class="cta-button">[ ابدأ الآن ]</button>
+        </div>
+    </header>
+    <!-- ================== -->
+    <!--  Hero Section End  -->
+    <!-- ================== -->
+
+</body>
+</html>
