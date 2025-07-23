@@ -233,7 +233,7 @@ html[dir="ltr"] .pain-point-container {
 /* ================================== */
 .services-section {
     padding: 100px 20px;
-    background: radial-gradient(ellipse at center, #212121 0%, var(--charcoal-black) 70%);
+    background: radial-gradient(ellipse at center, #212121 50%, var(--charcoal-black) 70%);
     text-align: center;
 }
 .section-title {
@@ -283,7 +283,7 @@ html[dir="ltr"] .pain-point-container {
 /* ================================== */
 .portfolio-section {
     padding: 100px 20px;
-    background: radial-gradient(ellipse at center, #212121 0%, var(--charcoal-black) 70%);
+    background: radial-gradient(ellipse at center, #212121 50%, var(--charcoal-black) 70%);
 }
 .portfolio-grid {
     max-width: 1200px;
