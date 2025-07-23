@@ -1,0 +1,530 @@
+/* ================================== */
+/* --- 1. General Settings & Variables --- */
+/* ================================== */
+:root {
+    --charcoal-black: #1A1A1A;
+    --emerald-green: #00A849; 
+    --off-white: #F5F5F5;
+    --dark-gray: #2C2C2C;
+    --font-en-title: 'Bebas Neue', sans-serif;
+    --font-ar-text: 'Cairo', sans-serif;
+    --font-en-text: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--charcoal-black);
+    color: var(--off-white);
+    overflow-x: hidden;
+    transition: font-family 0.3s ease;
+}
+
+body.lang-ar {
+    font-family: var(--font-ar-text);
+}
+body.lang-en {
+    font-family: var(--font-en-text);
+}
+
+/* ================================== */
+/* --- 2. Animation on Scroll --- */
+/* ================================== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================== */
+/* --- 3. Hero Section --- */
+/* ================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px);
+    transform: scale(1.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.title-en {
+    font-family: var(--font-en-title);
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    letter-spacing: 3px;
+    color: var(--off-white);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.subtitle-ar {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    max-width: 600px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+body.lang-en .subtitle-ar {
+    font-family: var(--font-en-text);
+}
+body.lang-ar .subtitle-ar {
+    font-family: var(--font-ar-text);
+}
+
+.cta-button {
+    background-color: transparent;
+    color: var(--off-white);
+    border: 2px solid var(--emerald-green);
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    position: relative;
+    box-shadow: 0 0 10px var(--emerald-green), inset 0 0 5px rgba(0, 168, 73, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+    text-decoration: none;
+}
+body.lang-ar .cta-button { font-family: var(--font-ar-text); }
+body.lang-en .cta-button { font-family: var(--font-en-text); }
+
+.cta-button:hover {
+    background-color: var(--emerald-green);
+    color: var(--charcoal-black);
+    box-shadow: 0 0 25px var(--emerald-green);
+}
+
+.cta-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 40px var(--emerald-green), inset 0 0 15px rgba(0, 168, 73, 0.8);
+}
+
+/* ================================== */
+/* --- 4. Pain Point Section --- */
+/* ================================== */
+.pain-point-section {
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pain-point-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('https://images.pexels.com/photos/2261482/pexels-photo-2261482.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    z-index: -2;
+}
+
+.pain-point-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(2, 26, 15, 0.8);
+    z-index: -1;
+}
+
+.pain-point-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+}
+html[dir="ltr"] .pain-point-container {
+    flex-direction: row-reverse;
+}
+
+.pain-point-image { flex: 1; }
+.pain-point-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    filter: grayscale(100%) contrast(1.2);
+}
+.pain-point-content { flex: 1; }
+.pain-point-content h2 {
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 30px;
+}
+.pain-points-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.pain-points-list li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.pain-points-list .icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    fill: var(--emerald-green);
+}
+
+/* ================================== */
+/* --- 5. Services Section --- */
+/* ================================== */
+.services-section {
+    padding: 100px 20px;
+    background: radial-gradient(ellipse at center, #212121 0%, var(--charcoal-black) 70%);
+    text-align: center;
+}
+.section-title {
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    margin-bottom: 60px;
+    text-align: center;
+}
+.services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+.service-card {
+    background-color: var(--dark-gray);
+    padding: 40px 30px;
+    border-radius: 10px;
+    border: 2px solid var(--dark-gray);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--emerald-green);
+    box-shadow: 0 0 20px rgba(0, 168, 73, 0.6);
+}
+.service-card .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
+    fill: var(--emerald-green);
+}
+.service-card h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* ================================== */
+/* --- 6. Portfolio Section --- */
+/* ================================== */
+.portfolio-section {
+    padding: 100px 20px;
+    background: radial-gradient(ellipse at center, #212121 0%, var(--charcoal-black) 70%);
+}
+.portfolio-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-flow: dense;
+    gap: 20px;
+}
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* ✨ New A4 Portrait Class ✨ */
+.portfolio-item.a4-portrait { 
+    grid-row: span 2; 
+    aspect-ratio: 210 / 297; /* A4 aspect ratio */
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.portfolio-item .overlay h3 {
+    color: var(--off-white);
+    font-size: 1.2rem;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+.portfolio-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+.portfolio-item:hover .overlay h3 {
+    transform: translateY(0);
+}
+
+/* ================================== */
+/* --- 7. Portfolio Modal --- */
+/* ================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 800px;
+    animation: fadeIn 0.5s;
+}
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+}
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-button:hover, .close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ================================== */
+/* --- 8. Final CTA Section --- */
+/* ================================== */
+.final-cta-section {
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.final-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    z-index: -2;
+}
+
+.final-cta-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(2, 26, 15, 0.7);
+    z-index: -1;
+}
+
+.final-cta-section h2 {
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+.final-cta-section .cta-button {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    transform: scale(1.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* ================================== */
+/* --- 9. Footer --- */
+/* ================================== */
+footer {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #111;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.social-links a .icon {
+    width: 28px;
+    height: 28px;
+    fill: #888;
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+.social-links a:hover .icon {
+    fill: var(--emerald-green);
+    transform: scale(1.2);
+}
+.copyright {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ================================== */
+/* --- 10. Language Switcher --- */
+/* ================================== */
+.lang-switcher {
+    position: absolute;
+    top: 25px;
+    right: 25px; /* Default for RTL */
+    z-index: 10;
+    display: flex;
+    gap: 5px;
+    background-color: rgba(44, 44, 44, 0.7);
+    padding: 5px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+html[dir="ltr"] .lang-switcher {
+    right: auto;
+    left: 25px;
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    color: #ccc;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-family: var(--font-en-text);
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.lang-switcher button.active {
+    background-color: var(--emerald-green);
+    color: white;
+}
+
+/* ================================== */
+/* --- 11. Responsive Design --- */
+/* ================================== */
+@media (max-width: 768px) {
+    .pain-point-container {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .pain-points-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-item.a4-portrait {
+        grid-row: unset; /* Reset row span on mobile */
+        aspect-ratio: 210 / 297; /* Maintain aspect ratio */
+    }
+}

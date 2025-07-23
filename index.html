@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- The dir and lang attributes will be updated by JavaScript -->
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -8,131 +9,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* --- 1. الإعدادات العامة والمتغيرات --- */
-        :root {
-            --charcoal-black: #1A1A1A;
-            --emerald-green: #00A849; 
-            --off-white: #F5F5F5;
-            --dark-gray: #2C2C2C;
-            --font-en-title: 'Bebas Neue', sans-serif;
-            --font-ar-text: 'Cairo', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--charcoal-black);
-            font-family: var(--font-ar-text);
-            color: var(--off-white);
-            overflow-x: hidden;
-        }
-
-        /* --- 2. تصميم قسم الهيرو --- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        /* ✨ كود الفيديو الجديد ✨ */
-        .video-background video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* أهم خاصية: تجعل الفيديو يملأ المساحة دون تشويه */
-            
-            /* ✨ التعديل الجديد: إضافة تأثير الضبابية (Blur) ✨ */
-            /* يمكنك تغيير قيمة 5px لزيادة أو تقليل الضبابية */
-            filter: blur(5px);
-            
-            /* نكبر حجم الفيديو قليلا لإخفاء الحواف الضبابية التي تنتج عن الفلتر */
-            transform: scale(1.1);
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: -1;
-        }
-
-        .hero-content {
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .title-en {
-            font-family: var(--font-en-title);
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            letter-spacing: 3px;
-            color: var(--off-white);
-            font-weight: 400;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .subtitle-ar {
-            font-family: var(--font-ar-text);
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            max-width: 600px;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        /* --- 3. تصميم الزر الجديد (Ghost Button) --- */
-        .cta-button {
-            font-family: var(--font-ar-text);
-            background-color: transparent;
-            color: var(--off-white);
-            border: 2px solid var(--emerald-green);
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 15px;
-            position: relative;
-            box-shadow: 0 0 10px var(--emerald-green), inset 0 0 5px rgba(0, 168, 73, 0.5);
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--emerald-green);
-            color: var(--charcoal-black);
-            box-shadow: 0 0 25px var(--emerald-green);
-        }
-        
-        .cta-button:active {
-            transform: scale(0.97);
-            box-shadow: 0 0 40px var(--emerald-green), inset 0 0 15px rgba(0, 168, 73, 0.8);
-        }
-    </style>
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -140,26 +20,166 @@
     <!-- Hero Section Start -->
     <!-- ================== -->
     <header class="hero">
-        <!-- ✨ تم تحديث هذا الجزء ✨ -->
+        <!-- Language switcher -->
+        <div class="lang-switcher">
+            <button id="lang-en">EN</button>
+            <button id="lang-ar">AR</button>
+        </div>
+
         <div class="video-background">
             <video playsinline autoplay muted loop>
-                <!-- ⬇️ غيّر اسم الملف هنا ⬇️ -->
-                <source src="background-video.mp4" type="video/mp4">
-                متصفحك لا يدعم عرض الفيديوهات.
+                <source src="stock/background-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
         </div>
-        
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
-            <h1 class="title-en">STOP TRAINING<br>START BUILDING YOUR EMPIRE</h1>
-            <p class="subtitle-ar">نحول خبرتك التدريبية إلى علامة تجارية تدر عليك الأرباح.</p>
-            <button class="cta-button">[ ابدأ الآن ]</button>
+            <!-- data-key attributes are for translation via JavaScript -->
+            <h1 class="title-en" data-key="heroTitle">STOP TRAINING<br>START BUILDING AN EMPIRE.</h1>
+            <p class="subtitle-ar" data-key="heroSubtitle">نحول خبرتك التدريبية إلى علامة تجارية تدر عليك الأرباح.</p>
+            <a href="#final-cta" class="cta-button" data-key="heroButton"> ابدأ الآن </a>
         </div>
     </header>
     <!-- ================== -->
     <!--  Hero Section End  -->
     <!-- ================== -->
+    
+    <!-- ============================ -->
+    <!-- Pain Point Section Start -->
+    <!-- ============================ -->
+    <section class="pain-point-section reveal-on-scroll">
+        <div class="pain-point-container">
+            <div class="pain-point-image">
+                <img src="stock/weightlifting.png" alt="مدرب يظهر عليه الإرهاق" data-key="painPointImageAlt">
+            </div>
+            <div class="pain-point-content">
+                <h2 data-key="painPointTitle">لديك الخبرة، لكن...</h2>
+                <ul class="pain-points-list">
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5-4-4V4h8v3.5l-4 4z"/></svg>
+                        <span data-key="painPoint1"><strong>وقتك ثمين،</strong> والتصميم ومتابعة صناع المحتوى يسرقه منك.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        <span data-key="painPoint2"><strong>المنافسة شرسة،</strong> والتميز عن الآخرين يتطلب أكثر من مجرد خبرة.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c2.14-.46 3.5-1.66 3.5-3.61 0-2.37-1.72-3.47-4.2-4.14z"/></svg>
+                        <span data-key="painPoint3"><strong>علامتك التجارية الحالية</strong> لا تعكس جودة خبرتك ولا تبرر أسعاراً أعلى.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- ============================ -->
+    <!--  Pain Point Section End  -->
+    <!-- ============================ -->
+
+    <!-- ========================= -->
+    <!-- Services Section Start -->
+    <!-- ========================= -->
+    <section class="services-section reveal-on-scroll">
+        <h2 class="section-title" data-key="servicesTitle">الحل بين يديك<br>خدماتنا المصممة لك</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+                <h3 data-key="service1Title">تصميم برامج PDF احترافية</h3>
+                <p data-key="service1Desc">نحول خطط التدريب والتغذية من مجرد نصوص إلى ملفات PDF ذات تصميم وهوية بصرية فاخرة تعكس احترافيتك.</p>
+            </div>
+            <div class="service-card">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <h3 data-key="service2Title">ملف المدرب الاحترافي</h3>
+                <p data-key="service2Desc">نصمم لك ملفًا تعريفيًا شاملاً (Coach Profile) يبرز خبراتك وقصتك وإنجازاتك، ليكون أداتك التسويقية الأقوى.</p>
+            </div>
+            <div class="service-card">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                <h3 data-key="service3Title">باقات محتوى السوشيال ميديا</h3>
+                <p data-key="service3Desc">نوفر لك باقات شهرية من التصاميم والبوستات الجاهزة للنشر، لضمان حضور مستمر واحترافي على حساباتك.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= -->
+    <!--  Services Section End  -->
+    <!-- ========================= -->
+
+    <!-- ============================ -->
+    <!-- Portfolio Section Start -->
+    <!-- ============================ -->
+    <section class="portfolio-section reveal-on-scroll">
+        <h2 class="section-title" data-key="portfolioTitle">شاهد جودة عملنا بنفسك</h2>
+        <div class="portfolio-grid">
+            <!-- ✨ All items are now standard squares ✨ -->
+            <div class="portfolio-item" data-img-src="stock/portfolio1.jpg">
+                <img src="stock/portfolio1.jpg" alt="نموذج عمل 1">
+                <div class="overlay"><h3 data-key="portfolio1">هوية كاملة للمدرب خالد</h3></div>
+            </div>
+            <div class="portfolio-item a4-portrait" data-img-src="stock/routine.png">
+                <img src="stock/routine.png" alt="نموذج عمل 2">
+                <div class="overlay"><h3 data-key="portfolio2">تصميم برنامج تدريبي</h3></div>
+            </div>
+            <div class="portfolio-item" data-img-src="stock/routine2.png">
+                <img src="stock/routine2.png" alt="نموذج عمل 3">
+                <div class="overlay"><h3 data-key="portfolio3">>تصميم برنامج تدريبي</h3></div>
+            </div>
+            <div class="portfolio-item" data-img-src="stock/Transforme2.jpg">
+                <img src="stock/Transforme2.jpg" alt="نموذج عمل 4">
+                <div class="overlay"><h3 data-key="portfolio4">ملف تعريفي للمدرب</h3></div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================ -->
+    <!--  Portfolio Section End  -->
+    <!-- ============================ -->
+
+    <!-- ========================= -->
+    <!-- Final CTA Section Start -->
+    <!-- ========================= -->
+    <section class="final-cta-section reveal-on-scroll" id="final-cta">
+        <h2 data-key="finalCtaTitle">هل أنت مستعد لبناء إمبراطوريتك؟</h2>
+        <a href="https://wa.me/+201097794098" target="_blank" class="cta-button" data-key="finalCtaButton"> تواصل معنا الآن </a>
+    </section>
+    <!-- ========================= -->
+    <!--  Final CTA Section End  -->
+    <!-- ========================= -->
+    
+    <!-- =================== -->
+    <!-- Footer Start -->
+    <!-- =================== -->
+    <footer id="footer" class="reveal-on-scroll">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://instagram.com/YOUR_USERNAME" target="_blank" aria-label="Instagram">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
+                </a>
+                <a href="https://wa.me/+201097794098" target="_blank" aria-label="WhatsApp">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M12.04 3.67C16.56 3.67 20.28 7.39 20.28 11.91C20.28 16.43 16.56 20.15 12.04 20.15C10.56 20.15 9.14 19.78 7.9 19.09L7.53 18.87L4.32 19.68L5.16 16.54L4.92 16.16C4.17 14.86 3.8 13.41 3.8 11.91C3.8 7.39 7.52 3.67 12.04 3.67M9.13 7.5C8.91 7.5 8.69 7.5 8.5 7.71C8.31 7.92 7.63 8.59 7.63 9.7C7.63 10.8 8.53 11.87 8.68 12.06C8.84 12.25 10.24 14.59 12.57 15.54C14.51 16.34 14.93 16.18 15.29 16.12C15.89 16.03 16.81 15.46 17.02 14.86C17.23 14.26 17.23 13.78 17.14 13.64C17.05 13.5 16.84 13.41 16.56 13.26C16.28 13.12 14.98 12.49 14.74 12.4C14.5 12.31 14.31 12.26 14.12 12.55C13.93 12.84 13.36 13.5 13.22 13.69C13.08 13.88 12.94 13.93 12.66 13.78C12.06 13.45 11.03 13.04 9.83 11.96C8.89 11.13 8.29 10.12 8.15 9.83C8.01 9.54 8.15 9.4 8.29 9.26C8.41 9.13 8.55 8.95 8.68 8.81C8.81 8.67 8.86 8.55 8.95 8.36C9.05 8.17 8.96 7.97 8.91 7.82C8.87 7.68 8.43 6.56 8.24 6.18C8.05 5.79 7.86 5.7 7.68 5.7H7.5Z" /></svg>
+                </a>
+                <a href="mailto:YOUR_EMAIL@DOMAIN.COM" target="_blank" aria-label="Email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z" /></svg>
+                </a>
+            </div>
+            <p class="copyright" data-key="copyright">&copy; 2024 CoachXposure. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <!-- =================== -->
+    <!--  Footer End -->
+    <!-- =================== -->
+
+    <!-- ======================= -->
+    <!-- Modal Structure Start -->
+    <!-- ======================= -->
+    <div id="portfolio-modal" class="modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="Project Details">
+        </div>
+    </div>
+    <!-- ======================= -->
+    <!--  Modal Structure End  -->
+    <!-- ======================= -->
+
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
 
 </body>
 </html>
