@@ -455,6 +455,24 @@ html[dir="ltr"] .pain-point-container {
     transform: scale(1.1);
     position: relative;
     z-index: 1;
+    overflow: hidden; /* <-- أضف هذا السطر */
+    display: inline-block;
+}
+/* Glare Effect for Final Button */
+.final-cta-section .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: skewX(-30deg);
+    transition: left 0.8s ease;
+}
+
+.final-cta-section .cta-button:hover::before {
+    left: 150%;
 }
 
 /* ================================== */
